@@ -1,0 +1,16 @@
+.profile-header-infos {
+  background-color: #4285F4;
+  color: white;
+  padding: 30px 30px 0 30px;
+  text-align: center;
+}
+.profile-header-infos h1 {
+  font-family: font-family: 'Lobster Two', cursive;
+}
+.profile-header-infos h2 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 100;
+  margin: 0;
+}
+
+

@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="cards">
+  <% @profiles.each_with_index do |profile, index| %>
+    <div class="card col-xs-6 col-md-3" id="<%= profile.id %>">
+            <div class="card-body">
+              <div class="card-picture" style="background-image: url('<%= profile.img_url %>')">
+                <div class="card-hover">
+                  <h4><%= profile.username %></h4>
+                  <p>< @quotes[index] ></p>
+                </div>
+              </div>
+              <div class="card-likes">
+                <ul class="list-inline">
+                  <li><a href="/profiles/<%= profile.id %>" data-method="patch"><i class="fa fa-heart"></i><%= profile.score %></li></a>
+                </ul>
+              </div>
+            </div>
+            <div class="card-footer">
+            </div>
+      </div>
+  <% end %>
+</div>
+</div>
