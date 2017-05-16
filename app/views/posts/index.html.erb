@@ -1,7 +1,4 @@
-<div class="btn">
-  <button type="button" class="btn btn-danger danger" data-toggle="modal" data-target=".bs-example-modal-sm">Nouveau ragot</button>
-</div>
-
+<div class="container">
 <div class="list">
 <% @posts.each do |post| %>
   <div class="product">
@@ -26,21 +23,4 @@
   </div>
 <% end %>
 </div>
-
-<!-- Small modal -->
-<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-  <div class="modal-dialog modal-sm" role="document">
-    <div class="modal-content">
-      <div class="form" style="padding: 30px;">
-        <form class="form pop-up" method='post' action="/posts">
-          <textarea class="form-control" placeholder="Commentaire" name="body" rows="10" cols="30"/></textarea>
-          <input type="hidden" value="1" name="user_id">
-          </br>
-          <button class="btn btn-danger">Ajouter ragot</button>
-        </form>
-      </div>
-    </div>
-  </div>
 </div>
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

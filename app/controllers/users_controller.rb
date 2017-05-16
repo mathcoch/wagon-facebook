@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     if session[:user_id]
       @profiles = Profile.all
       @posts = Post.all
-      redirect_to landing_page_url
+      redirect_to index_path
       return
     end
     render :new, :layout => false
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.profile = Profile.find_by_username(user_params[:username])
     if @user.save
-      redirect_to log_in_url
+      redirect_to log_in_path
       return
     else
       render :new, :layout => false

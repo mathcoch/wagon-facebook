@@ -1,11 +1,10 @@
 class SessionsController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
+  before_action :set_posts_profiles, only: [:new]
 
   def new
     if session[:user_id]
-      @profiles = Profile.all
-      @posts = Post.all
-      redirect_to landing_page_url
+      redirect_to index_path
       return
     end
     render :new, :layout => false
@@ -15,10 +14,10 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:email], params[:password])
     if user
       session[:user_id] = user.id
-      redirect_to landing_page_url, :notice => "Logged in!"
+      redirect_to index_path, :notice => "Logged in!"
     else
       flash.now.alert = "Invalid email or password"
-      render "new"
+      render :new, :layout => false
     end
   end
 

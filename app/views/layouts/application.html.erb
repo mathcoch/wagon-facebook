@@ -15,36 +15,79 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-  <div class="profile-header-wrapper">
-    <div class="container profile-header-container text-center">
-      <div class="profile-header-infos">
-        <img src="<%= current_user.profile.img_url %>" class="avatar-large">
-        <h1>LeWagon</h1>
-        <h2>Batch #70, <%= current_user.profile.username %></h2>
+    <div class="navbar-wagon navbar-wagon-fixed">
+      <!-- Logo -->
+      <%= link_to root_path, class: "navbar-wagon-brand" do %>
+        <%= image_tag "le-wagon-logo.png" %>
+      <% end %>
+
+      <!-- Right Navigation -->
+      <div class="navbar-wagon-right hidden-xs hidden-sm">
+
+        <!-- Notification -->
+        <%= link_to "/profiles", class: "navbar-wagon-item navbar-wagon-link" do %>
+          <div class="badge-container">
+            <i class="fa fa-users"></i>
+            <div class="badge badge-blue"><%= @profiles.count %></div>
+          </div>
+        <% end %>
+
+        <%= link_to "/posts", class: "navbar-wagon-item navbar-wagon-link" do %>
+          <div class="badge-container">
+            <i class="fa fa-comments-o "></i>
+            <div class="badge badge-blue"><%= @posts.count %></div>
+          </div>
+        <% end %>
+
+        <!-- Profile picture and dropdown -->
+        <div class="navbar-wagon-item">
+          <div class="dropdown">
+            <%= image_tag current_user.profile.img_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+              <li>
+                <%= link_to "/log_out" do %>
+                  <i class="fa fa-sign-out"></i> <%= t(".profile", default: "Sign-out") %>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Button (call-to-action) -->
+        <button type="button" class="navbar-wagon-item navbar-wagon-button btn" data-toggle="modal" data-target=".bs-example-modal-sm">Nouveau ragot</button>
       </div>
-      <div class="tabs-container">
-        <div class="tabs">
-          <a class="tab" href="/profiles">
-            <h3> <%= @profiles.count %> </h3>
-            <p>Trombi</p>
-          </a>
-          <a class="tab" href="/posts">
-            <h3> <%= @posts.count %> </h3>
-            <p>Ragots</p>
-          </a>
-          <a class="tab" href="#">
-            <h3></h3>
-            <p>Work in progress</p>
-          </a>
-          <a class="tab" href="#">
-            <h3></h3>
-            <p>Work in progress</p>
-          </a>
+
+
+      <!-- Dropdown list appearing on mobile only -->
+      <div class="navbar-wagon-item hidden-md hidden-lg">
+        <div class="dropdown">
+          <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <li><a href="/profiles">Batch profiles</a></li>
+            <li><a href="/posts">Ragots</a></li>
+          </ul>
         </div>
       </div>
     </div>
-  </div>
+
+    <!-- Small modal for adding a post -->
+    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="form" style="padding: 60px;">
+              <%= form_for @post do |f| %>
+                <%= f.label :Ragot %>
+                <%= f.text_field :body %>
+                <%= f.submit %>
+              <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <%= yield %>
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </body>
 </html>

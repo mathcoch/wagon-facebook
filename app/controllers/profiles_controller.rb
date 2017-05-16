@@ -1,7 +1,8 @@
 class ProfilesController < ApplicationController
+  before_action :set_posts_profiles, only: [:index, :update]
+
   def index
-    @profiles = Profile.all.order('score DESC')
-    @posts = Post.all
+    @post = Post.new
   end
 
   def update
@@ -15,12 +16,10 @@ class ProfilesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_user
       @profile = Profile.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:profile).permit(:username, :score)
     end
