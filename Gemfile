@@ -24,6 +24,7 @@ gem "bcrypt-ruby", :require => "bcrypt"
 
 
 
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

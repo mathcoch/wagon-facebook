@@ -1,3 +1,13 @@
 <div  class="container">
   <h1 class="text-center">Salut <%= current_user.profile.username %></h1>
+  </br>
+  <h4 class="text-center">Funny picture of the day</h4>
+
+  <div class="cards">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="card-body card-welcome">
+          <div class="card-picture-welcome" style="background-image: url('<%= image_url "funny.jpg", height: 500, width: 500, crop: :fill %>')"></div>
+        </div>
+        </div>
+  </div>
 </div>
