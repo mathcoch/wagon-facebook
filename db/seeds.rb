@@ -1,16 +1,23 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 require 'json'
 
-batch_hash = JSON.parse(File.read('db/batch'))
+
+# batch_hash = JSON.parse(File.read('db/batch'))
+# batch_hash.each do |key, value|
+#   username = key
+#   img_url = value['url']
+#   profile = Profile.create(username: username, img_url: img_url)
+# end
+
+# post = Post.new(body: 'Al Pacino a un poster de Vincent Panis dans sa chambre', score: '8')
+# post.user =
+# Post.new(body: 'Alexis attendrait toujours son passage sur BFM', score: '7')
+# Post.new(body: 'Achille ferait ses courses en ligne', score: '0')
+# Post.new(body: '32 ans et s\'amuser à créer un site de ragots....', score: '0')
+
+batch_hash = JSON.parse(File.read('db/batch_hash'))
 batch_hash.each do |key, value|
   username = key
-  img_url = value['url']
-  profile = Profile.create(username: username, img_url: img_url)
+  profile = Profile.find_by_username(username)
+  params = value
+  profile.update(params)
 end

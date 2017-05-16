@@ -16,7 +16,7 @@
   <body>
     <div class="navbar-wagon navbar-wagon-fixed">
       <!-- Logo -->
-      <%= link_to root_path, class: "navbar-wagon-brand" do %>
+      <%= link_to '/index', class: "navbar-wagon-brand" do %>
         <%= image_tag "le-wagon-logo.png" %>
       <% end %>
 
@@ -45,7 +45,7 @@
             <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
               <li>
                 <%= link_to "/log_out" do %>
-                  <i class="fa fa-sign-out"></i> <%= t(".profile", default: "Sign-out") %>
+                  <i class="fa fa-sign-out"></i> Sign-out
                 <% end %>
               </li>
             </ul>
