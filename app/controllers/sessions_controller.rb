@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
       redirect_to index_path
       return
     end
-    render :new, :layout => false
+    render :new, :layout => 'log_and_sign'
   end
 
   def create
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       redirect_to index_path, :notice => "Logged in!"
     else
       flash.now.alert = "Invalid email or password"
-      render :new, :layout => false
+      render :new, :layout => 'log_and_sign'
     end
   end
 

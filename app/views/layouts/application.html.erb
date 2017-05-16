@@ -3,7 +3,6 @@
   <head>
     <title>WagonFacebook</title>
     <meta charset="utf-8">
-    <title>Batch#70</title>
 
     <link rel="icon" type="image/png" href="http://lewagon.github.io/ui-components/images/lewagon.png" />
 
@@ -75,10 +74,9 @@
       <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
           <div class="form" style="padding: 60px;">
-              <%= form_for @post do |f| %>
-                <%= f.label :Ragot %>
-                <%= f.text_field :body %>
-                <%= f.submit %>
+              <%= simple_form_for @post do |f| %>
+                <%= f.input :body, :as => :text, input_html: {rows: 10, cols: 10}, label: false %>
+                <%= f.submit "ajouter ragot", class: "btn btn-primary"  %>
               <% end %>
           </div>
         </div>

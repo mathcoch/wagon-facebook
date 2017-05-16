@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       redirect_to index_path
       return
     end
-    render :new, :layout => false
+    render :new, :layout => 'log_and_sign'
   end
 
   def create
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       redirect_to log_in_path
       return
     else
-      render :new, :layout => false
+      render :new, :layout => 'log_and_sign'
     end
   end
 
