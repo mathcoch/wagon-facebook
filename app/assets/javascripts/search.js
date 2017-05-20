@@ -61,5 +61,7 @@ function app(opts) {
 //
 // ---------------------
 function getTemplate(templateName) {
-  return document.querySelector(`#${templateName}-template`).innerHTML;
+  // return document.querySelector(`#${templateName}-template`).innerHTML;
+  return document.querySelector("#" + templateName + "-template").innerHTML;
+
 };
