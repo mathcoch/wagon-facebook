@@ -3,8 +3,8 @@ class Post < ApplicationRecord
   include AlgoliaSearch
 
   algoliasearch do
-    attribute :id, :body, :score, :user.username
-    searchableAttributes ['body', 'user.username']
+    attribute :id, :body, :score
+    searchableAttributes ['body']
     customRanking ['desc(score)']
   end
 
