@@ -34,7 +34,7 @@
           <a href="{{{linkedin}}}"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a> |
           <a href="http://www.github.com/{{{username}}}"><i class="fa fa-github" aria-hidden="true"></i></a>
         </p>
-        <p class="profile-score"><a href="/profiles/{{{id}}}" data-method="patch"><i class="fa fa-star" aria-hidden="true"></i> - {{{score}}}</a></p>
+        <p class="profile-score"><a href="/profiles/{{{id}}}" data-method="patch"><i class="fa fa-star" aria-hidden="true"></i> {{{score}}}</a></p>
         <p class="profile-bio">{{{_highlightResult.bio.value}}}</p>
       </div>
     </div>
@@ -43,9 +43,12 @@
 <script type="text/html" id="post-template">
     <div class="post">
       <div class="post-content">
-        <h2 class="post-name">{{{_highlightResult.username.value}}}</h2>
+        <div class="post-image">
+          <img src="{{img_url}}" alt="{{username}}" class="avatar-large">
+        </div>
+        <h2 class="post-name">{{{created_at}}}</h2>
         <p class="post-score"><i class="fa fa-star" aria-hidden="true"></i>
- - {{{score}}}</p>
+ {{{score}}}</p>
         <p class="post-body">{{{_highlightResult.body.value}}}</p>
       </div>
     </div>

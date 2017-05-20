@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :set_posts_profiles, only: [:index]
+  skip_before_action :authenticate_user!, only: [ :home ]
 
   def index
     @post = Post.new

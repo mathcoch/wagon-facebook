@@ -36,7 +36,7 @@ var postsHits = instantsearch.widgets.hits({
 
 var searchBox = instantsearch.widgets.searchBox({
   container: document.querySelector('#search-input'),
-  placeholder: 'Rechercher un profile, un ragot ...',
+  placeholder: 'Rechercher un profile ou un ragot',
 });
 
 

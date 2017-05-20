@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>WagonFacebook</title>
+    <title>Wagon Facebook</title>
     <meta charset="utf-8">
 
     <link rel="icon" type="image/png" href="http://lewagon.github.io/ui-components/images/lewagon.png" />
@@ -14,9 +14,18 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <div class="col col-sm-4 col-sm-offset-4">
-      <%= yield %>
+    <div id='start'></div>
+      <%= render 'shared/navbar' %>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <div class='content sign-in' id='content'>
+      <div class="col-sm-6 col-sm-offset-3">
+        <%= yield %>
+      </div>
     </div>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= render 'shared/footer' %>
   </body>
 </html>

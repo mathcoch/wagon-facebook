@@ -1,15 +1,7 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
+  devise_for :users
+  root :to => "pages#index"
 
-  resources :sessions
-  resources :users, only: [:new, :create]
-  resources :profiles, only: [:index, :update]
-  resources :posts, only: [:create, :index, :update]
-
-  root :to => "sessions#new"
-  get "log_in" => "sessions#new", :as => "log_in"
-  get 'index' => 'pages#index', :as => 'index'
-  get "log_out" => "sessions#destroy", :as => "log_out"
-  get "sign_up" => "users#new", :as => "sign_up"
-
+  resources :profiles, only: [:update]
+  resources :posts, only: [:create, :update]
 end

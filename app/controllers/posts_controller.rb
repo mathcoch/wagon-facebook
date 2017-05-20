@@ -1,22 +1,21 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:update]
-  before_action :set_posts_profiles, only: [:index, :create, :update]
-
-  def index
-    @post = Post.new
-  end
 
   def create
     @post = Post.new(post_params)
     @post.user = current_user
     @post.save
-    render :index
+
+    @post = Post.new
+    render 'pages/index'
   end
 
   def update
     @post.score += 1
     @post.save
-    redirect_to posts_url
+
+    @post = Post.new
+    render 'pages/index'
   end
 
   private
