@@ -10,13 +10,11 @@
       <div class="row">
         <div class="col-12 col-sm-6">
           <div id="stats"></div>
-          <div id="active-filters"></div>
-          <div id="hits"></div>
+          <div id="profiles"></div>
         </div>
         <div class="col-12 col-sm-6">
           <div id="stats"></div>
-          <div id="active-filters"></div>
-          <div id="hits"></div>
+          <div id="posts"></div>
         </div>
       </div>
     </div>
@@ -28,28 +26,45 @@
   <!-- /INTERFACE -->
 
   <!-- TEMPLATES -->
-  <script type="text/html" id="hit-template">
-    <div class="hit">
-      <div class="hit-image">
+  <script type="text/html" id="profile-template">
+    <div class="profile">
+      <div class="profile-image">
         <img src="{{img_url}}" alt="{{username}}" class="avatar-xlarge">
       </div>
-      <div class="hit-content">
-        <h2 class="hit-name">{{{_highlightResult.username.value}}}</h2>
-        <p class="hit-details">
+      <div class="profile-content">
+        <h2 class="profile-name">{{{_highlightResult.username.value}}}</h2>
+        <p class="profile-details">
           {{{_highlightResult.email.value}}} | {{{_highlightResult.phone.value}}} |
           <a href="{{{linkedin}}}"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a> |
           <a href="http://www.github.com/{{{username}}}"><i class="fa fa-github" aria-hidden="true"></i></a>
         </p>
-        <p class="hit-stars"><i class="fa fa-star" aria-hidden="true"></i>
- - {{{score}}}</p>
-        <p class="hit-description">{{{_highlightResult.bio.value}}}</p>
+        <p class="profile-score"><a href="/profiles/{{{id}}}" data-method="patch"><i class="fa fa-star" aria-hidden="true"></i> - {{{score}}}</a></p>
+        <p class="profile-bio">{{{_highlightResult.bio.value}}}</p>
       </div>
     </div>
   </script>
 
-  <script type="text/html" id="no-results-template">
+<script type="text/html" id="post-template">
+    <div class="post">
+      <div class="post-content">
+        <h2 class="post-name">{{{_highlightResult.username.value}}}</h2>
+        <p class="post-score"><i class="fa fa-star" aria-hidden="true"></i>
+ - {{{score}}}</p>
+        <p class="post-body">{{{_highlightResult.body.value}}}</p>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/html" id="no-results-profiles-template">
     <div id="no-results-message">
-      <p>We didn't find any results for the search <em>"{{query}}"</em>.</p>
+      <p>We didn't find any profiles for the search <em>"{{query}}"</em>.</p>
+      <a href="." class='clear-all'>Clear search</a>
+    </div>
+  </script>
+
+   <script type="text/html" id="no-results-posts-template">
+    <div id="no-results-message">
+      <p>We didn't find any posts for the search <em>"{{query}}"</em>.</p>
       <a href="." class='clear-all'>Clear search</a>
     </div>
   </script>

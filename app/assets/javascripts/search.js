@@ -1,59 +1,50 @@
-/* global instantsearch */
-
-app({
+var profiles = instantsearch({
   appId: 'LZEMPFONKV',
   apiKey: '427c69ac1af038f71cecc79b5be449e3',
-  indexName: 'Profile'
+  indexName: 'Profile',
+  searchFunction: function(helper) {
+    var query = profiles.helper.state.query;
+    posts.helper.setQuery(query);
+    posts.helper.search();
+    helper.search();
+  }
 });
 
-function app(opts) {
-  // ---------------------
-  //
-  //  Init
-  //
-  // ---------------------
-  const search = instantsearch({
-    appId: opts.appId,
-    apiKey: opts.apiKey,
-    indexName: opts.indexName,
-    urlSync: true,
-  });
+var posts = instantsearch({
+  appId: 'LZEMPFONKV',
+  apiKey: '427c69ac1af038f71cecc79b5be449e3',
+  indexName: 'Post'
+});
 
-  // ---------------------
-  //
-  //  Default widgets
-  //
-  // ---------------------
-  search.addWidget(
-    instantsearch.widgets.searchBox({
-      container: '#search-input',
-      placeholder: 'Rechercher un profile, un ragot ...',
-    })
-  );
+var profilesHits = instantsearch.widgets.hits({
+  container: document.querySelector('#profiles'),
+  hitsPerPage: 100,
+  templates: {
+    item: getTemplate('profile'),
+    empty: getTemplate('no-results-profiles'),
+  }
+});
 
-  search.addWidget(
-    instantsearch.widgets.hits({
-      container: '#hits',
-      hitsPerPage: 100,
-      templates: {
-        item: getTemplate('hit'),
-        empty: getTemplate('no-results'),
-      },
-      transformData: {
-        item: function (item) {
-          return item;
-        },
-      },
-    })
-  );
+var postsHits = instantsearch.widgets.hits({
+  container: document.querySelector('#posts'),
+  hitsPerPage: 100,
+  templates: {
+    item: getTemplate('post'),
+    empty: getTemplate('no-results-posts'),
+  }
+});
 
-  // ---------------------
-  //
-  //  Filtering widgets
-  //
-  // ---------------------
-  search.start();
-};
+var searchBox = instantsearch.widgets.searchBox({
+  container: document.querySelector('#search-input'),
+  placeholder: 'Rechercher un profile, un ragot ...',
+});
+
+
+profiles.addWidget(profilesHits);
+profiles.addWidget(searchBox);
+posts.addWidget(postsHits);
+posts.start();
+profiles.start();
 
 // ---------------------
 //
@@ -61,7 +52,5 @@ function app(opts) {
 //
 // ---------------------
 function getTemplate(templateName) {
-  // return document.querySelector(`#${templateName}-template`).innerHTML;
   return document.querySelector("#" + templateName + "-template").innerHTML;
-
 };
