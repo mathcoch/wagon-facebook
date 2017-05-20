@@ -41,7 +41,6 @@ function app(opts) {
       },
       transformData: {
         item: function (item) {
-          item.starsLayout = getStarsHTML(item.rating);
           return item;
         },
       },
@@ -63,15 +62,4 @@ function app(opts) {
 // ---------------------
 function getTemplate(templateName) {
   return document.querySelector(`#${templateName}-template`).innerHTML;
-};
-
-function getStarsHTML(rating, maxRating) {
-  let html = '';
-  maxRating = maxRating || 5;
-
-  for (let i = 0; i < maxRating; ++i) {
-    html += `<span class="ais-star-rating--star${i < rating ? '' : '__empty'}"></span>`;
-  };
-
-  return html;
 };
