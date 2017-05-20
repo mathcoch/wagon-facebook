@@ -1,34 +1,29 @@
   <!-- INTERFACE -->
-  <header>
-    <a href="."><img src="./assets/img/instant_search_logo@2x.png"/></a>
-    <div id="search-input"></div>
-    <div id="search-input-icon"></div>
-  </header>
-
   <main>
-    <div id="left-column">
-      <div id="hierarchical-categories" class="facet"></div>
-      <div id="brand" class="facet"></div>
-      <div id="stars" class="facet"></div>
-      <div id="price" class="facet"></div>
-      <div id="price-range" class="facet"></div>
-      <div id="type" class="facet"></div>
-      <div id="popularity-selector" class="facet"></div>
-      <div id="free-shipping" class="facet"></div>
-    </div>
-
-    <div id="right-column">
-      <div id="sort-by-wrapper"><span id="sort-by"></span></div>
-      <div id="stats"></div>
-      <div id="active-filters"></div>
-      <div id="hits"></div>
-      <div id="pagination"></div>
+    <div class="container" id="right-columns">
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="search-input"></div>
+          <div id="search-input-icon"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-sm-6">
+          <div id="stats"></div>
+          <div id="active-filters"></div>
+          <div id="hits"></div>
+        </div>
+        <div class="col-12 col-sm-6">
+          <div id="stats"></div>
+          <div id="active-filters"></div>
+          <div id="hits"></div>
+        </div>
+      </div>
     </div>
   </main>
 
   <footer>
-    Source Code on <a href="https://github.com/algolia/examples/blob/master/instant-search/instantsearch.js">Github</a> -
-    Powered by <a href="https://www.algolia.com">Algolia</a> - Data from <a href="https://developer.bestbuy.com">Best Buy</a>
+    Powered by Le Wagon and mathieu
   </footer>
   <!-- /INTERFACE -->
 
@@ -36,14 +31,18 @@
   <script type="text/html" id="hit-template">
     <div class="hit">
       <div class="hit-image">
-        <img src="{{image}}" alt="{{name}}">
+        <img src="{{img_url}}" alt="{{username}}" class="avatar-xlarge">
       </div>
       <div class="hit-content">
-        <h3 class="hit-price">${{price}}</h3>
-        <h2 class="hit-name">{{{_highlightResult.name.value}}}</h2>
-        <p class="hit-category-breadcrumb">{{{categories}}}</p>
-        <p class="hit-stars">{{{starsLayout}}} ({{popularity}})</p>
-        <p class="hit-description">{{{_highlightResult.description.value}}}</p>
+        <h2 class="hit-name">{{{_highlightResult.username.value}}}</h2>
+        <p class="hit-details">
+          {{{_highlightResult.email.value}}} | {{{_highlightResult.phone.value}}} |
+          <a href="{{{linkedin}}}"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a> |
+          <a href="http://www.github.com/{{{username}}}"><i class="fa fa-github" aria-hidden="true"></i></a>
+        </p>
+        <p class="hit-stars"><i class="fa fa-star" aria-hidden="true"></i>
+ - {{{score}}}</p>
+        <p class="hit-description">{{{_highlightResult.bio.value}}}</p>
       </div>
     </div>
   </script>
@@ -58,5 +57,4 @@
 
   <!-- SCRIPTS -->
   <script src="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
-  <script src="search.js"></script>
   <!-- /SCRIPTS -->
