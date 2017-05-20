@@ -12,7 +12,8 @@ class ProfilesController < ApplicationController
 
     @profiles = Profile.all.order('score DESC')
     @posts = Post.all
-    redirect_to "#{profiles_url}##{profile.id}"
+    @post = Post.new
+    render 'pages/index'
   end
 
   private
