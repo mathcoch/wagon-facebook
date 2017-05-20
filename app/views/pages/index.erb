@@ -1,13 +1,62 @@
-<div  class="container">
-  <h1 class="text-center">Salut <%= current_user.profile.username %> !</h1>
-  </br>
-  <h4 class="text-center">Funny picture of the day</h4>
+  <!-- INTERFACE -->
+  <header>
+    <a href="."><img src="./assets/img/instant_search_logo@2x.png"/></a>
+    <div id="search-input"></div>
+    <div id="search-input-icon"></div>
+  </header>
 
-  <div class="cards">
-      <div class="col-md-8 col-md-offset-2">
-        <div class="card-body card-welcome">
-        <%= video_tag "efousse.mov",:size => "500", :controls => true %>
-        </div>
-        </div>
-  </div>
-</div>
+  <main>
+    <div id="left-column">
+      <div id="hierarchical-categories" class="facet"></div>
+      <div id="brand" class="facet"></div>
+      <div id="stars" class="facet"></div>
+      <div id="price" class="facet"></div>
+      <div id="price-range" class="facet"></div>
+      <div id="type" class="facet"></div>
+      <div id="popularity-selector" class="facet"></div>
+      <div id="free-shipping" class="facet"></div>
+    </div>
+
+    <div id="right-column">
+      <div id="sort-by-wrapper"><span id="sort-by"></span></div>
+      <div id="stats"></div>
+      <div id="active-filters"></div>
+      <div id="hits"></div>
+      <div id="pagination"></div>
+    </div>
+  </main>
+
+  <footer>
+    Source Code on <a href="https://github.com/algolia/examples/blob/master/instant-search/instantsearch.js">Github</a> -
+    Powered by <a href="https://www.algolia.com">Algolia</a> - Data from <a href="https://developer.bestbuy.com">Best Buy</a>
+  </footer>
+  <!-- /INTERFACE -->
+
+  <!-- TEMPLATES -->
+  <script type="text/html" id="hit-template">
+    <div class="hit">
+      <div class="hit-image">
+        <img src="{{image}}" alt="{{name}}">
+      </div>
+      <div class="hit-content">
+        <h3 class="hit-price">${{price}}</h3>
+        <h2 class="hit-name">{{{_highlightResult.name.value}}}</h2>
+        <p class="hit-category-breadcrumb">{{{categories}}}</p>
+        <p class="hit-stars">{{{starsLayout}}} ({{popularity}})</p>
+        <p class="hit-description">{{{_highlightResult.description.value}}}</p>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/html" id="no-results-template">
+    <div id="no-results-message">
+      <p>We didn't find any results for the search <em>"{{query}}"</em>.</p>
+      <a href="." class='clear-all'>Clear search</a>
+    </div>
+  </script>
+  <!-- /TEMPLATES -->
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
+  <script src="search.js"></script>
+  <!-- /SCRIPTS -->
