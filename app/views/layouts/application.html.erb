@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>WagonFacebook</title>
+    <title>Wagon Facebook</title>
     <meta charset="utf-8">
 
     <link rel="icon" type="image/png" href="http://lewagon.github.io/ui-components/images/lewagon.png" />
@@ -14,77 +14,18 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <div class="navbar-wagon navbar-wagon-fixed">
-      <!-- Logo -->
-      <%= link_to '/index', class: "navbar-wagon-brand" do %>
-        <%= image_tag "le-wagon-logo.png" %>
-      <% end %>
+    <div id='start'></div>
+    <%= render 'shared/navbar' %>
+    <%= render 'shared/banner' %>
 
-      <!-- Right Navigation -->
-      <div class="navbar-wagon-right hidden-xs hidden-sm">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
 
-        <!-- Notification -->
-        <%= link_to "/profiles", class: "navbar-wagon-item navbar-wagon-link" do %>
-          <div class="badge-container">
-            <i class="fa fa-users"></i>
-            <div class="badge badge-blue"><%= @profiles.count %></div>
-          </div>
-        <% end %>
-
-        <%= link_to "/posts", class: "navbar-wagon-item navbar-wagon-link" do %>
-          <div class="badge-container">
-            <i class="fa fa-comments-o "></i>
-            <div class="badge badge-blue"><%= @posts.count %></div>
-          </div>
-        <% end %>
-
-        <!-- Profile picture and dropdown -->
-        <div class="navbar-wagon-item">
-          <div class="dropdown">
-            <%= image_tag current_user.profile.img_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-            <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-              <li>
-                <%= link_to "/log_out" do %>
-                  <i class="fa fa-sign-out"></i> Sign-out
-                <% end %>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Button (call-to-action) -->
-        <button type="button" class="navbar-wagon-item navbar-wagon-button btn" data-toggle="modal" data-target=".bs-example-modal-sm">Nouveau ragot</button>
-      </div>
-
-
-      <!-- Dropdown list appearing on mobile only -->
-      <div class="navbar-wagon-item hidden-md hidden-lg">
-        <div class="dropdown">
-          <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li><%= link_to 'Profiles', profiles_path %></li>
-            <li><%= link_to 'Ragots', posts_path %></li>
-            <li><%= link_to 'Log-out', log_out_path %></li>
-          </ul>
-        </div>
-      </div>
+    <div class='content' id='content'>
+      <%= yield %>
     </div>
 
-    <!-- Small modal for adding a post -->
-    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-      <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-          <div class="form" style="padding: 60px;">
-              <%= simple_form_for @post do |f| %>
-                <%= f.input :body, :as => :text, input_html: {rows: 10, cols: 10}, label: false %>
-                <%= f.submit "ajouter ragot", class: "btn btn-primary"  %>
-              <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <%= yield %>
+    <%= render 'shared/footer' %>
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>

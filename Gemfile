@@ -22,6 +22,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem "bcrypt-ruby", :require => "bcrypt"
 gem "algoliasearch-rails"
+gem 'devise'
 
 
 

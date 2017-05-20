@@ -18,3 +18,26 @@
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 20px;
 }
+focus {
+  transition: all 0.6s ease;
+}
+focus:hover {
+  color: $red;
+}
+/* Navbar right button */
+.banner-button {
+  margin-left: 10px;
+  padding: 0 20px;
+  border-radius: 15em;
+  line-height: 25px;
+  background-color: $red;
+  color: white;
+  font-size: 12px;
+  font-weight: 100;
+  border: 1px solid $red;
+}
+.banner-button:hover {
+  color: white;
+  background: $red;
+  border-color: white;
+}

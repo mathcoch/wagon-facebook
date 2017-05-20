@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 
   def new
     if session[:user_id]
-      redirect_to index_path
+      redirect_to index_path + '#start'
       return
     end
     render :new, :layout => 'log_and_sign'

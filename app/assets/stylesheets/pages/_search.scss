@@ -6,6 +6,10 @@ html {
   overflow-y: scroll;
 }
 
+main {
+  min-height: 50em;
+}
+
 #left-column {
   float: left;
   width: 23%;
