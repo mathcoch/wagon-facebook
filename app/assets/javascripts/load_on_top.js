@@ -4,7 +4,10 @@
 
 $(document).ready(function(){
     $('#start_search').on('click', function(event){
-      $('main').addClass('hidden');
+      event.preventDefault();
+      $('main').removeClass('hidden');
+      document.querySelector('#search').scrollIntoView({
+        behavior: 'smooth' });
     });
 });
 
