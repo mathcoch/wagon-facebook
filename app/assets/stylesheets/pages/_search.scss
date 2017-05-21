@@ -133,13 +133,19 @@ main {
   padding: 15px 0;
   border-bottom: 1px solid $gray-light;
 }
-.post-name {
+.post-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.post-date {
   margin: 0;
 }
 .post-image {
   display: inline-block;
   width: 16%;
   text-align: center;
+
 }
 .post-image img {
   max-width: 100%;

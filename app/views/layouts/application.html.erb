@@ -11,15 +11,15 @@
 
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
     <div id='start'></div>
       <%= render 'shared/navbar' %>
       <%= render 'shared/banner' %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <p class="notice hidden"><%= notice %></p>
+    <p class="alert hidden"><%= alert %></p>
 
     <div class='content' id='content'>
       <%= yield %>

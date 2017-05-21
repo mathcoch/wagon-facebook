@@ -9,7 +9,7 @@
 
 # Algolia.init :application_id => "LZEMPFONKV", :api_key => "d273e7cc48a855feae0750a9fac8db9a"
 # def load_data_from_database
-#   records = Post.all.map { |pr| {id: pr.id, body: pr.body, score: pr.score, username: pr.user.username, created_at: pr.created_at, img_url: pr.user.profile.img_url} }
+#   records = Post.all.map { |pr| {id: pr.id, body: pr.body, score: pr.score, username: pr.user.username, created_at: pr.created_at.strftime('%A, %d %b %Y %l:%M %p'), img_url: pr.user.profile.img_url} }
 # end
 # index = Algolia::Index.new("Post")
 # load_data_from_database.each_slice(1000) do |batch|

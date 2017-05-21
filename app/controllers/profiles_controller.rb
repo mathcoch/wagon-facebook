@@ -5,7 +5,7 @@ class ProfilesController < ApplicationController
     profile.save
 
     @post = Post.new
-    render 'pages/index'
+    redirect_to root_path
   end
 
   private

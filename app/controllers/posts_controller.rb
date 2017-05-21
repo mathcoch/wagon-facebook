@@ -7,7 +7,8 @@ class PostsController < ApplicationController
     @post.save
 
     @post = Post.new
-    render 'pages/index'
+    # render 'pages/index'
+    redirect_to root_path
   end
 
   def update
@@ -15,7 +16,7 @@ class PostsController < ApplicationController
     @post.save
 
     @post = Post.new
-    render 'pages/index'
+    redirect_to root_path
   end
 
   private
